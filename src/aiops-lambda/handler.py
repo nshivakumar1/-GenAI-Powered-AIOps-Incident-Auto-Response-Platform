@@ -30,7 +30,8 @@ def get_recent_logs(log_group_name, limit=50):
             descending=True,
             limit=1
         )
-        if not streams['logStreams']: return "No log streams found."
+        if not streams['logStreams']:
+            return "No log streams found."
         
         stream_name = streams['logStreams'][0]['logStreamName']
         events = cw_logs.get_log_events(

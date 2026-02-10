@@ -24,7 +24,7 @@ def lambda_handler(event, context):
         if action == "restart_service":
             logger.info(f"Restarting service {service_name} in cluster {cluster_name}")
             # Force new deployment
-            response = ecs.update_service(
+            ecs.update_service(
                 cluster=cluster_name,
                 service=service_name,
                 forceNewDeployment=True

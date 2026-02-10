@@ -1,5 +1,4 @@
 import os
-import json
 import logging
 import requests
 
@@ -18,7 +17,7 @@ class SlackClient:
             return
 
         severity = incident_data.get("severity", "UNKNOWN")
-        color = "#FF0000" if severity == "P1" else "#FFA500" if severity == "P2" else "#FFFF00"
+        # color = "#FF0000" if severity == "P1" else "#FFA500" if severity == "P2" else "#FFFF00"
         
         blocks = [
             {

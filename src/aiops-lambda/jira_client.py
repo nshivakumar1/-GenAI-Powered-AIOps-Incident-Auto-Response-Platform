@@ -1,5 +1,4 @@
 import os
-import json
 import logging
 import requests
 
@@ -28,12 +27,12 @@ class JiraClient:
         }
 
         # Map 'P1'/'P2' to Jira Priority IDs (This varies by Jira instance, assuming standard names)
-        priority_map = {
-            "P1": "Highest",
-            "P2": "High",
-            "P3": "Medium"
-        }
-        jira_priority = priority_map.get(priority, "Medium")
+        # priority_map = {
+        #     "P1": "Highest",
+        #     "P2": "High",
+        #     "P3": "Medium"
+        # }
+        # "priority": {"name": jira_priority} # Uncomment if priority scheme matches
 
         payload = {
             "fields": {
