@@ -2,9 +2,11 @@ import time
 import psutil
 import threading
 import logging
-from fastapi import FastAPI, APIRouter, HTTPException, BackgroundTasks
+from fastapi import FastAPI, APIRouter, BackgroundTasks
 from fastapi.responses import JSONResponse
 from jira import JIRA
+import requests
+from requests.auth import HTTPBasicAuth
 import os
 
 # Configure Logging
@@ -59,8 +61,7 @@ def health_check():
 
     return {"status": "healthy", "cpu": cpu_usage, "memory": mem_usage}
 
-import requests
-from requests.auth import HTTPBasicAuth
+
 
 # ... (Previous imports are handled by replacing the top block or just adding these if I can.
 # To be safe, I will include imports in the top block modification or ensure I don't break typical structure.
