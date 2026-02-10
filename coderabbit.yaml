@@ -18,8 +18,7 @@ reviews:
 
   # Tools to use for linting/static analysis (if applicable)
 tools:
-  ast-grep:
-    enabled: true
+  ast-grep: {}
   ruff:
     enabled: true # Great for Python
   tflint:
