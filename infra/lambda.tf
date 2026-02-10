@@ -71,10 +71,11 @@ resource "aws_lambda_function" "aiops_brain" {
   environment {
     variables = {
       GEMINI_API_KEY = var.gemini_api_key_placeholder
-      JIRA_DOMAIN    = "your-domain.atlassian.net"
-      JIRA_EMAIL     = "user@example.com"
-      JIRA_API_TOKEN = "your_token"
-      SLACK_WEBHOOK_URL = "https://hooks.slack.com/services/..."
+      JIRA_DOMAIN    = "devopsvibecoding.atlassian.net"
+      JIRA_EMAIL     = "nakul.cloudops@outlook.com"
+      JIRA_PROJECT_KEY = "AIO"
+      JIRA_API_TOKEN = var.jira_api_token
+      SLACK_WEBHOOK_URL = var.gemini_api_key_placeholder # Temporary reuse or add new var
     }
   }
 }
