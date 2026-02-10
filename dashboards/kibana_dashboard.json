@@ -1,0 +1,18 @@
+[
+    {
+        "id": "aiops-index-pattern",
+        "type": "index-pattern",
+        "attributes": {
+            "title": "aiops-incidents-*",
+            "timeFieldName": "@timestamp"
+        }
+    },
+    {
+        "id": "aiops-dashboard",
+        "type": "dashboard",
+        "attributes": {
+            "title": "🧠 GenAI AIOps Overview",
+            "panelsJSON": "[{\"gridData\":{\"x\":0,\"y\":0,\"w\":24,\"h\":15,\"i\":\"1\"},\"version\":\"7.6.0\",\"panelIndex\":\"1\",\"type\":\"visualization\",\"id\":\"severity-pie-chart\",\"embeddableConfig\":{}}]"
+        }
+    }
+]
