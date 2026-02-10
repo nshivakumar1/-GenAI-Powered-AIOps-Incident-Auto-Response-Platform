@@ -1,0 +1,78 @@
+name: AIOps Platform CI/CD
+
+on:
+  push:
+    branches: ["main"]
+  pull_request:
+    branches: ["main"]
+
+permissions:
+  contents: read
+
+jobs:
+  # 1. Python Linting & Testing
+  python-ci:
+    name: Python Lint & Test
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Set up Python 3.9
+        uses: actions/setup-python@v4
+        with:
+          python-version: "3.9"
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install ruff
+          pip install -r src/aiops-lambda/requirements.txt || true
+      - name: Lint with Ruff
+        run: |
+          ruff check src/
+
+  # 2. Terraform Validation
+  terraform-ci:
+    name: Terraform Validate
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: hashicorp/setup-terraform@v2
+        with:
+          terraform_version: 1.5.0
+
+      - name: Terraform Format Check
+        run: terraform fmt -check -recursive infra/
+
+      - name: Terraform Init
+        env:
+          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          AWS_REGION: us-east-1
+        run: |
+          cd infra
+          # We don't have a backend configured yet for remote state, 
+          # so this is just a local init validation.
+          terraform init -backend=false
+
+      - name: Terraform Validate
+        run: |
+          cd infra
+          terraform validate
+
+  # 3. Frontend Build Check
+  frontend-ci:
+    name: Frontend Build
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Use Node.js 18
+        uses: actions/setup-node@v3
+        with:
+          node-version: 18
+      - name: Install Dependencies
+        run: |
+          cd src/frontend
+          npm ci
+      - name: Build
+        run: |
+          cd src/frontend
+          npm run build

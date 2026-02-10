@@ -34,9 +34,9 @@ resource "aws_iam_role_policy" "lambda_permissions" {
           "ecs:DescribeServices",
           "logs:FilterLogEvents",
           "logs:GetLogEvents",
-          "logs:DescribeLogStreams" 
+          "logs:DescribeLogStreams"
         ]
-        Resource = "*" 
+        Resource = "*"
       }
     ]
   })
@@ -48,7 +48,7 @@ data "archive_file" "aiops_lambda_zip" {
   type        = "zip"
   source_dir  = "${path.module}/../src/aiops-lambda"
   output_path = "${path.module}/files/aiops-lambda.zip"
-  excludes    = ["requirements.txt", "__pycache__"] 
+  excludes    = ["requirements.txt", "__pycache__"]
 }
 
 data "archive_file" "remediation_lambda_zip" {
@@ -70,11 +70,12 @@ resource "aws_lambda_function" "aiops_brain" {
 
   environment {
     variables = {
-      GEMINI_API_KEY = var.gemini_api_key_placeholder
-      JIRA_DOMAIN    = "your-domain.atlassian.net"
-      JIRA_EMAIL     = "user@example.com"
-      JIRA_API_TOKEN = "your_token"
-      SLACK_WEBHOOK_URL = "https://hooks.slack.com/services/..."
+      GEMINI_API_KEY    = var.gemini_api_key_placeholder
+      JIRA_DOMAIN       = "devopsvibecoding.atlassian.net"
+      JIRA_EMAIL        = "nakul.cloudops@outlook.com"
+      JIRA_PROJECT_KEY  = "AIO"
+      JIRA_API_TOKEN    = var.jira_api_token
+      SLACK_WEBHOOK_URL = var.slack_webhook_url
     }
   }
 }

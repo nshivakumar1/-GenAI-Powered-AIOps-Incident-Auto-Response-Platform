@@ -2,7 +2,7 @@ import time
 import psutil
 import threading
 import logging
-from fastapi import FastAPI, HTTPException
+from fastapi import FastAPI
 from fastapi.responses import JSONResponse
 
 # Configure Logging
