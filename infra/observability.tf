@@ -39,8 +39,8 @@ resource "aws_cloudwatch_metric_alarm" "high_memory" {
 # --- EventBridge Rule for Alarm State Change ---
 
 resource "aws_cloudwatch_event_rule" "capture_alarm" {
-  name        = "capture-cloudwatch-alarms"
-  description = "Capture CloudWatch Alarm State Changes"
+  name           = "capture-cloudwatch-alarms"
+  description    = "Capture CloudWatch Alarm State Changes"
   event_bus_name = aws_cloudwatch_event_bus.aiops_bus.name
 
   event_pattern = jsonencode({
