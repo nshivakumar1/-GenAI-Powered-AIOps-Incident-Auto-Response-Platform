@@ -12,3 +12,8 @@ variable "jira_api_token" {
   description = "Jira API Token for creating tickets"
   sensitive   = true
 }
+
+variable "slack_webhook_url" {
+  description = "Slack Incoming Webhook URL for alerts"
+  sensitive   = true
+}

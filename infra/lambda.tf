@@ -75,7 +75,7 @@ resource "aws_lambda_function" "aiops_brain" {
       JIRA_EMAIL     = "nakul.cloudops@outlook.com"
       JIRA_PROJECT_KEY = "AIO"
       JIRA_API_TOKEN = var.jira_api_token
-      SLACK_WEBHOOK_URL = var.gemini_api_key_placeholder # Temporary reuse or add new var
+      SLACK_WEBHOOK_URL = var.slack_webhook_url
     }
   }
 }
