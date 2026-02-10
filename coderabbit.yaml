@@ -6,10 +6,10 @@ early_access: false
 reviews:
   # Enable high-level summary of changes
   high_level_summary: true
-  
+
   # Enable detailed line-by-line review
   review_status: true
-  
+
   # Enable auto-review for all PRs (or restrict to specific branches)
   auto_review:
     enabled: true
@@ -17,11 +17,15 @@ reviews:
     base_branches: ["main", "master", "develop"]
 
   # Tools to use for linting/static analysis (if applicable)
-  tools:
-    ast-grep: true
-    ruff: true      # Great for Python
-    tflint: true    # Great for Terraform
-    eslint: true    # Great for React/JS
+tools:
+  ast-grep:
+    enabled: true
+  ruff:
+    enabled: true # Great for Python
+  tflint:
+    enabled: true # Great for Terraform
+  eslint:
+    enabled: true # Great for React/JS
 
 chat:
   auto_reply: true
@@ -44,7 +48,7 @@ instructions: |
   - The backend uses Python (FastAPI, Boto3) and AWS Lambda.
   - Infrastructure is managed via Terraform.
   - The frontend is React + Vite + Tailwind CSS.
-  
+
   Please focus reviews on:
   1. Security (IAM roles, API keys, open ports).
   2. Error handling in Lambda functions.
