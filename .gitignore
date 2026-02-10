@@ -12,6 +12,28 @@ __pycache__/
 .venv/
 venv/
 *.env
+src/aiops-lambda/boto3/
+src/aiops-lambda/botocore/
+src/aiops-lambda/certifi/
+src/aiops-lambda/charset_normalizer/
+src/aiops-lambda/cryptography/
+src/aiops-lambda/dateutil/
+src/aiops-lambda/google/
+src/aiops-lambda/google_*/
+src/aiops-lambda/googleapis_common_protos*/
+src/aiops-lambda/grpc/
+src/aiops-lambda/grpc_status/
+src/aiops-lambda/grpcio*/
+src/aiops-lambda/idna/
+src/aiops-lambda/requests/
+src/aiops-lambda/rsa/
+src/aiops-lambda/s3transfer/
+src/aiops-lambda/six.py
+src/aiops-lambda/tqdm/
+src/aiops-lambda/typing_extensions.py
+src/aiops-lambda/urllib3/
+src/aiops-lambda/*.dist-info/
+src/aiops-lambda/*.pth
 
 # Node.js
 node_modules/
