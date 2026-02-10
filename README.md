@@ -1,7 +1,7 @@
 # 🧠 GenAI-Powered AIOps Incident Auto-Response Platform
 
 ![License](https://img.shields.io/badge/license-MIT-blue.svg) ![Status](https://img.shields.io/badge/status-active-success.svg) ![AI](https://img.shields.io/badge/AI-Gemini%20Pro-orange)
-
+![CodeRabbit Pull Request Reviews](https://img.shields.io/coderabbit/prs/github/nshivakumar1/-GenAI-Powered-AIOps-Incident-Auto-Response-Platform?utm_source=oss&utm_medium=github&utm_campaign=nshivakumar1%2F-GenAI-Powered-AIOps-Incident-Auto-Response-Platform&labelColor=171717&color=FF570A&link=https%3A%2F%2Fcoderabbit.ai&label=CodeRabbit+Reviews)
 An enterprise-grade **Self-Healing Cloud Monitoring System** that detects incidents, analyzes them using **Google Gemini AI**, and automates remediation via **Jira** and **Slack**.
 
 Designed to simulate a real-world **Site Reliability Engineering (SRE)** workflow, reducing Mean Time To Resolution (MTTR) by automating Root Cause Analysis (RCA).
