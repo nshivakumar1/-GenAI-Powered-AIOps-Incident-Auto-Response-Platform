@@ -71,8 +71,8 @@ resource "aws_lambda_function" "aiops_brain" {
   environment {
     variables = {
       GEMINI_API_KEY    = var.gemini_api_key_placeholder
-      JIRA_DOMAIN       = "devopsvibecoding.atlassian.net"
-      JIRA_EMAIL        = "nakul.cloudops@outlook.com"
+      JIRA_DOMAIN       = var.jira_domain
+      JIRA_EMAIL        = var.jira_email
       JIRA_PROJECT_KEY  = "AIO"
       JIRA_API_TOKEN    = var.jira_api_token
       SLACK_WEBHOOK_URL = var.slack_webhook_url
@@ -103,12 +103,13 @@ resource "aws_lambda_function_url" "remediation_url" {
 }
 
 # --- EventBridge Permission ---
+# --- EventBridge Permission ---
 resource "aws_lambda_permission" "allow_eventbridge" {
   statement_id  = "AllowExecutionFromEventBridge"
   action        = "lambda:InvokeFunction"
   function_name = aws_lambda_function.aiops_brain.function_name
   principal     = "events.amazonaws.com"
-  source_arn    = aws_cloudwatch_event_bus.aiops_bus.arn
+  source_arn    = aws_cloudwatch_event_rule.capture_alarm.arn
 }
 
 # --- Outputs ---

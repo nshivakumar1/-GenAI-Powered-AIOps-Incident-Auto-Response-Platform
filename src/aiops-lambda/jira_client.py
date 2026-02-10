@@ -46,7 +46,7 @@ class JiraClient:
                         "content": [{"type": "text", "text": description}]
                     }]
                 },
-                "issuetype": {"name": "Incident"}, # Or "Bug" or "Task"
+                "issuetype": {"id": "10020"}, # "Report an incident" for JSM project
                 "labels": labels,
                 # "priority": {"name": jira_priority} # Uncomment if priority scheme matches
             }
@@ -60,4 +60,6 @@ class JiraClient:
             return issue_key
         except Exception as e:
             logger.error(f"Failed to create Jira ticket: {e}")
+            if 'response' in locals():
+                logger.error(f"Jira API Response: {response.text}")
             return "ERROR-000"

@@ -39,9 +39,9 @@ resource "aws_cloudwatch_metric_alarm" "high_memory" {
 # --- EventBridge Rule for Alarm State Change ---
 
 resource "aws_cloudwatch_event_rule" "capture_alarm" {
-  name           = "capture-cloudwatch-alarms"
-  description    = "Capture CloudWatch Alarm State Changes"
-  event_bus_name = aws_cloudwatch_event_bus.aiops_bus.name
+  name        = "capture-cloudwatch-alarms"
+  description = "Capture CloudWatch Alarm State Changes"
+  # Default bus is used when event_bus_name is omitted
 
   event_pattern = jsonencode({
     source      = ["aws.cloudwatch"]
@@ -61,8 +61,7 @@ resource "aws_cloudwatch_event_rule" "capture_alarm" {
 # --- EventBridge Target (Trigger Lambda) ---
 
 resource "aws_cloudwatch_event_target" "sns" {
-  rule           = aws_cloudwatch_event_rule.capture_alarm.name
-  target_id      = "SendToAIOpsLambda"
-  arn            = aws_lambda_function.aiops_brain.arn
-  event_bus_name = aws_cloudwatch_event_bus.aiops_bus.name
+  rule      = aws_cloudwatch_event_rule.capture_alarm.name
+  target_id = "SendToAIOpsLambda"
+  arn       = aws_lambda_function.aiops_brain.arn
 }

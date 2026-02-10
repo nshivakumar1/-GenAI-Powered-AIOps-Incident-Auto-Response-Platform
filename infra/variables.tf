@@ -17,3 +17,13 @@ variable "slack_webhook_url" {
   description = "Slack Incoming Webhook URL for alerts"
   sensitive   = true
 }
+
+variable "jira_email" {
+  description = "Email address for Jira authentication"
+  type        = string
+}
+
+variable "jira_domain" {
+  description = "Jira domain (e.g., your-company.atlassian.net)"
+  type        = string
+}
