@@ -7,7 +7,7 @@ function App() {
     const [healthData, setHealthData] = useState(null);
     const [incidents, setIncidents] = useState([]);
 
-    const VICTIM_SERVICE_URL = "http://localhost:8000"; // Update for prod
+    const VICTIM_SERVICE_URL = "/api"; // Requests routed via ALB
 
     // Poll Health
     useEffect(() => {
@@ -33,8 +33,8 @@ function App() {
                     <p className="text-gray-400 mt-1">GenAI-Powered Self-Healing System</p>
                 </div>
                 <div className={`px-4 py-2 rounded-full font-bold ${healthData?.status === 'healthy' ? 'bg-green-500/20 text-green-400' :
-                        healthData?.status === 'disconnected' ? 'bg-gray-700 text-gray-400' :
-                            'bg-red-500/20 text-red-500'
+                    healthData?.status === 'disconnected' ? 'bg-gray-700 text-gray-400' :
+                        'bg-red-500/20 text-red-500'
                     }`}>
                     System Status: {healthData?.status?.toUpperCase() || 'CONNECTING...'}
                 </div>
