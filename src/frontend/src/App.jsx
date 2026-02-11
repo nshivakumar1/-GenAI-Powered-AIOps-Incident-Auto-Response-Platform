@@ -3,6 +3,14 @@ import ChaosPanel from './components/ChaosPanel';
 import HealthMonitor from './components/HealthMonitor';
 import IncidentFeed from './components/IncidentFeed';
 
+/**
+ * Root React component for the AIOps Incident Command UI.
+ *
+ * Polls the victim service health endpoint (/api/health) every 2 seconds to keep local health state up to date,
+ * and renders the application's header (with a status badge), live telemetry, chaos engineering controls, and incident feed.
+ *
+ * @returns {JSX.Element} The rendered application UI.
+ */
 function App() {
     const [healthData, setHealthData] = useState(null);
     const [incidents, setIncidents] = useState([]);
