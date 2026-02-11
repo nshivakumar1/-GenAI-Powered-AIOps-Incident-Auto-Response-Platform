@@ -13,7 +13,16 @@ class JiraClient:
 
     def create_ticket(self, summary: str, description: str, priority: str, labels: list) -> str:
         """
-        Creates a Jira ticket and returns the issue key (e.g., OPS-123).
+        Create a Jira issue in the configured project and return its issue key.
+        
+        Parameters:
+            summary (str): Short summary/title for the Jira issue.
+            description (str): Detailed description used as the Jira issue description.
+            priority (str): Priority identifier (e.g., "P1", "P2"). Currently not included in the payload by default; mapping to Jira priority is present but commented out.
+            labels (list): List of label strings to attach to the issue.
+        
+        Returns:
+            str: The created issue key (e.g., "OPS-123"). Returns "MOCK-101" if Jira credentials are missing and ticket creation is skipped, or "ERROR-000" if an error occurs while calling the Jira API.
         """
         if not (self.domain and self.email and self.token):
             logger.warning("Jira credentials missing. Skipping ticket creation.")
